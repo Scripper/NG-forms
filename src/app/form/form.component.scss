@@ -1,0 +1,20 @@
+form {
+  text-align: center;
+  .inputs-values {
+    border: 1px dotted black;
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+  .person {
+    margin: 1rem;
+    input {
+      margin-right: 1rem;
+    }
+  }
+  .phones {
+    input {
+      margin-bottom: 0.5rem;
+      margin-right: 0.5rem;
+    }
+  }
+}

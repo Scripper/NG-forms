@@ -1,5 +1,5 @@
 <form class="form-container" [formGroup]="myForm">
-  <div class="inputs-values">value : {{ myForm.value | json }}</div>
+
   <div class="person">
     <input type="text" placeholder="First Name" formControlName="firstName">
 
@@ -10,7 +10,7 @@
   <div class="phones" formArrayName="phones">
     <div *ngFor="let phone of phoneForms.controls; let i=index" [formGroupName]="i">
       <input type="tel" formControlName="number" placeholder="Phone number">
-      <button (click)="deletePhone(i)" [disabled]=isDeleteButtonDis>Delete</button>
+      <button (click)="deletePhone(i)" [disabled]=isDeleteButtonDisabled>Delete</button>
     </div>
   </div>
   <button (click)="addPhone()">Add phone number</button>

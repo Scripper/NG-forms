@@ -6,11 +6,13 @@ import { FormComponent } from './form/form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
+import { FormsGroupComponent } from './forms-group/forms-group.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
+    FormsGroupComponent,
   ],
   imports: [
     BrowserModule,

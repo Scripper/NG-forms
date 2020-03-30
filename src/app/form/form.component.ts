@@ -27,7 +27,6 @@ export class FormComponent implements OnInit, OnDestroy {
       phones: this.fb.array([])
     });
     this.formSubscribe = this.myForm.valueChanges.subscribe((values) => {
-      // console.log(values);
       this.formValues.emit(values);
       if (values.phones && values.phones.length <= 1) {
         this.isDeleteButtonDisabled = true;

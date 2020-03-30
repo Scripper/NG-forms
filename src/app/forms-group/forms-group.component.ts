@@ -7,18 +7,8 @@ import {FormBuilder} from '@angular/forms';
   templateUrl: './forms-group.component.html',
   styleUrls: ['./forms-group.component.css']
 })
-export class FormsGroupComponent implements AfterViewInit, OnDestroy {
-  @ViewChild(FormComponent) childReference;
-  formValues;
-  dataToShow: object;
-  ngAfterViewInit(): void {
-    this.formValues = this.childReference.formValues;
-    this.formValues.subscribe( (value) => {
-      this.dataToShow = value;
-    }); }
+export class FormsGroupComponent {
 
   constructor(private fb: FormBuilder) { }
-  addNewForm() {
-    console.log('ad')
-  }
+
 }

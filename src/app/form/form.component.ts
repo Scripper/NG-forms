@@ -1,7 +1,6 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
-import {subscriptionLogsToBeFn} from 'rxjs/internal/testing/TestScheduler';
-import {Subscribable, Subscriber, Subscription} from 'rxjs';
+import { Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -12,45 +11,41 @@ export class FormComponent implements OnInit, OnDestroy {
   myForm: FormGroup;
   isDeleteButtonDisabled: boolean;
   formSubscribe: Subscription;
-  @Output() formValues = new EventEmitter();
 
   constructor(private fb: FormBuilder) {
     this.isDeleteButtonDisabled = false;
-    this.formValues.emit(this.myForm);
   }
-
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      firstName: '',
-      lastName: '',
-      age: null,
-      phones: this.fb.array([])
+      users: this.fb.array([])
     });
     this.formSubscribe = this.myForm.valueChanges.subscribe((values) => {
-      this.formValues.emit(values);
-      if (values.phones && values.phones.length <= 1) {
+      console.log(values);
+      if (values.users.length <= 1) {
         this.isDeleteButtonDisabled = true;
         return;
       }
       this.isDeleteButtonDisabled = false;
     });
-    this.addPhone();
+    this.addFormGroup();
   }
   ngOnDestroy(): void {
     this.formSubscribe.unsubscribe();
   }
-
-  get phoneForms() {
-    return this.myForm.get('phones') as FormArray;
+  get formGroup() {
+    return this.myForm.get('users') as FormArray;
   }
-  addPhone() {
-    const phone = this.fb.group({
-      number: [],
+  addFormGroup() {
+    const user = this.fb.group({
+      firstName: '',
+      lastName: '',
+      age: null,
+      number: null,
     });
-    this.phoneForms.push(phone);
+    this.formGroup.push(user);
   }
-  deletePhone(index) {
-    this.phoneForms.removeAt(index);
+  deleteFormGroup(index) {
+    this.formGroup.removeAt(index);
   }
 }
 

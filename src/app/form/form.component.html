@@ -1,17 +1,19 @@
+<code>values: {{this.myForm.value.users | json}}</code>
+<hr>
 <form class="form-container" [formGroup]="myForm">
+  <button (click)="addFormGroup()" class="btn btn-green">Add new form group</button>
+  <div formArrayName="users">
+    <div *ngFor="let form of formGroup.controls; let idx=index" [formGroupName]="idx" class="form-group">
+      <div class="person">
+        <input type="text" placeholder="First Name" formControlName="firstName">
 
-  <div class="person">
-    <input type="text" placeholder="First Name" formControlName="firstName">
+        <input type="text" placeholder="Last Name" formControlName="lastName">
 
-    <input type="text" placeholder="Last Name" formControlName="lastName">
+        <input type="number" formControlName="age">
 
-    <input type="number" formControlName="age">
-  </div>
-  <div class="phones" formArrayName="phones">
-    <div *ngFor="let phone of phoneForms.controls; let i=index" [formGroupName]="i">
-      <input type="tel" formControlName="number" placeholder="Phone number">
-      <button (click)="deletePhone(i)" [disabled]=isDeleteButtonDisabled>Delete</button>
+        <input type="tel" formControlName="number" placeholder="Phone number">
+      </div>
+      <button (click)="deleteFormGroup(idx)" class="btn btn-delete" [disabled]="isDeleteButtonDisabled">Delete this form group</button>
     </div>
   </div>
-  <button (click)="addPhone()">Add phone number</button>
 </form>

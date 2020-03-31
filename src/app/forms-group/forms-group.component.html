@@ -1,12 +1,13 @@
-<!--<code>values: {{([this.formValues !== undefined && this.formValues.hasOwnProperty('users') ? this.formValues['users'][0] : ''])}}</code>-->
-<code *ngFor="let value of this.formValues, let i = index">{{value | json}}</code>
-<hr>
 <div class="btn-wrapper"><button (click)="addFormGroup()" class="btn btn-green">Add new form group</button></div>
-<div class="form-container">
-  <app-form
-    (formValues)="getFormValues($event)">
-  </app-form>
-</div>
-
+<form class="form-container" [formGroup]="myForm">
+  <div formArrayName="users">
+      <div *ngFor="let form of this.formGroup.controls; let idx=index" [formGroupName]="idx">
+        <app-form (formValues)="formGroupController($event, idx)"
+        >
+        </app-form>
+        <button (click)="deleteFormGroup(idx)" class="btn btn-delete">Delete this form group</button>
+      </div>
+  </div>
+</form>
 
 

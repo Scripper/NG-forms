@@ -15,3 +15,23 @@
 code {
   display: block;
 }
+form {
+  text-align: center;
+  border-bottom: 1px solid black;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+.btn {
+  padding: 10px;
+  color: #fff;
+}
+.btn-green {
+  background-color: rgb(0, 223, 18);
+}
+.btn-delete {
+  background-color: rgb(223, 49, 55);
+}
+.btn[disabled] {
+  background-color: gray;
+}
+

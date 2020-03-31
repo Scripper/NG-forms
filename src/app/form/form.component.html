@@ -1,7 +1,5 @@
-<code>values: {{this.myForm.value.users | json}}</code>
-<hr>
 <form class="form-container" [formGroup]="myForm">
-  <button (click)="addFormGroup()" class="btn btn-green">Add new form group</button>
+<button (click)="addFormGroup()" class="btn btn-green">Add new form group</button>
   <div formArrayName="users">
     <div *ngFor="let form of formGroup.controls; let idx=index" [formGroupName]="idx" class="form-group">
       <div class="person">

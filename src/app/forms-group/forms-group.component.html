@@ -1,6 +1,11 @@
-<!--<div class="inputs-values">value : {{ dataToShow | json }}</div>-->
+<!--<code>values: {{([this.formValues !== undefined && this.formValues.hasOwnProperty('users') ? this.formValues['users'][0] : ''])}}</code>-->
+<code *ngFor="let value of this.formValues, let i = index">{{value | json}}</code>
+<hr>
+<div class="btn-wrapper"><button (click)="addFormGroup()" class="btn btn-green">Add new form group</button></div>
 <div class="form-container">
-  <app-form></app-form>
+  <app-form
+    (formValues)="getFormValues($event)">
+  </app-form>
 </div>
 
 

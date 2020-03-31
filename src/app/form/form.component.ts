@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import { Subscription} from 'rxjs';
 
@@ -11,16 +11,17 @@ export class FormComponent implements OnInit, OnDestroy {
   myForm: FormGroup;
   isDeleteButtonDisabled: boolean;
   formSubscribe: Subscription;
-
+  @Output () formValues = new EventEmitter();
+  @Input () trigger;
   constructor(private fb: FormBuilder) {
-    this.isDeleteButtonDisabled = false;
+    this.isDeleteButtonDisabled = true;
   }
   ngOnInit(): void {
     this.myForm = this.fb.group({
       users: this.fb.array([])
     });
     this.formSubscribe = this.myForm.valueChanges.subscribe((values) => {
-      console.log(values);
+      this.formValues.emit(values.users);
       if (values.users.length <= 1) {
         this.isDeleteButtonDisabled = true;
         return;

@@ -1,7 +1,5 @@
-<form class="form-container" [formGroup]="myForm">
-<button (click)="addFormGroup()" class="btn btn-green">Add new form group</button>
-  <div formArrayName="users">
-    <div *ngFor="let form of formGroup.controls; let idx=index" [formGroupName]="idx" class="form-group">
+<div class="form-container" [formGroup]="myForm">
+  <div>
       <div class="person">
         <input type="text" placeholder="First Name" formControlName="firstName">
 
@@ -11,7 +9,5 @@
 
         <input type="tel" formControlName="number" placeholder="Phone number">
       </div>
-      <button (click)="deleteFormGroup(idx)" class="btn btn-delete" [disabled]="isDeleteButtonDisabled">Delete this form group</button>
-    </div>
   </div>
-</form>
+</div>

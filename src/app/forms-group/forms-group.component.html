@@ -6,6 +6,7 @@
         >
         </app-form>
         <button (click)="deleteFormGroup(idx)" class="btn btn-delete">Delete this form group</button>
+        <code>{{this.formValues.value | json}}</code>
       </div>
   </div>
 </form>
